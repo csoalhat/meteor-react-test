@@ -1,0 +1,40 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+export default class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    //calls super and repasses the props not to lose them because we override the constructor
+    // state is imnternal to component
+    this.state = {
+      count: this.props.count || 0
+    };
+  }
+
+  increment() {
+    //setState is how you update state
+    this.setState({
+      count: this.state.count +=1
+    })
+  };
+
+  decrement() {
+    this.setState({
+      count: this.state.count -=1
+    })
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Sign up to Short Lnk</h1>
+        <div>
+          {this.state.count}
+          <button onClick={this.increment.bind(this)}>+1</button>
+          <button onClick={this.decrement.bind(this)}>-1</button>
+        </div>
+        <Link to="/">Already have an account?</Link>
+      </div>
+    )
+  }
+}
